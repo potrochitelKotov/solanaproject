@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="BondOps is a Solana Devnet demo for coupon and redemption workflows for tokenized bonds."
+    />
+    <meta name="theme-color" content="#0a0d12" />
+    <title>BondOps — Corporate actions, made verifiable</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="BondOps home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>bond<span class="brand-light">ops</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="network-pill"><span class="pulse-dot"></span> DEVNET DEMO</span>
+        <button class="wallet-button" id="walletButton" type="button">
+          <span class="wallet-icon" aria-hidden="true">◈</span>
+          <span id="walletLabel">Wallet not connected</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top" class="page-wrap">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> CORPORATE ACTIONS ON SOLANA</div>
+          <h1>Corporate actions,<br /><span>made verifiable.</span></h1>
+          <p class="hero-text">
+            Prepare a bond event, review investor entitlements, and follow every claim from one clear workspace.
+          </p>
+          <div class="hero-meta">
+            <span><span class="check-icon">✓</span> Coupon distributions</span>
+            <span><span class="check-icon">✓</span> Maturity redemption</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="hero-card-label">NEXT ACTION</span>
+            <span class="status status-scheduled"><span></span> SCHEDULED</span>
+          </div>
+          <div class="hero-card-title">KZ Demo Bond · Coupon 02</div>
+          <div class="hero-card-amount">₸ 2,400,000 <span>TEST</span></div>
+          <div class="hero-card-rule"></div>
+          <div class="hero-card-details">
+            <div><span>Record date</span><strong>18 Nov 2026</strong></div>
+            <div><span>Eligible wallets</span><strong>24 investors</strong></div>
+            <div><span>Distribution</span><strong>On-chain claim</strong></div>
+          </div>
+          <div class="hero-card-glow" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="BondOps demo workspace">
+        <div class="workspace-heading">
+          <div>
+            <div class="section-kicker">WORKSPACE</div>
+            <h2>Action console</h2>
+          </div>
+          <div class="view-switch" role="tablist" aria-label="Choose demo view">
+            <button class="view-tab active" id="issuerTab" type="button" role="tab" aria-selected="true" aria-controls="issuerView">Issuer</button>
+            <button class="view-tab" id="investorTab" type="button" role="tab" aria-selected="false" aria-controls="investorView">Investor</button>
+          </div>
+        </div>
+
+        <section class="view-panel" id="issuerView" role="tabpanel" aria-labelledby="issuerTab">
+          <div class="stat-grid">
+            <article class="stat-card">
+              <div class="stat-label">TOTAL DISTRIBUTED <span class="stat-icon green">↗</span></div>
+              <div class="stat-value">₸ 8.4M <span class="test-label">TEST</span></div>
+              <div class="stat-caption">Across 3 completed demo actions</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">ELIGIBLE INVESTORS <span class="stat-icon violet">◎</span></div>
+              <div class="stat-value">24</div>
+              <div class="stat-caption">Wallets in the sample snapshot</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">OPEN CLAIMS <span class="stat-icon amber">◷</span></div>
+              <div class="stat-value">7</div>
+              <div class="stat-caption">₸ 620,000 test tokens unclaimed</div>
+            </article>
+          </div>
+
+          <div class="content-card actions-card">
+            <div class="card-heading">
+              <div>
+                <div class="section-kicker">LIFECYCLE</div>
+                <h3>Corporate actions</h3>
+              </div>
+              <button class="primary-button" id="createActionButton" type="button"><span>＋</span> Create action</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>EVENT</th><th>TYPE</th><th>RECORD DATE</th><th>INVESTORS</th><th>STATUS</th><th></th></tr>
+                </thead>
+                <tbody id="actionRows">
+                  <tr>
+                    <td><div class="event-name">KZ Demo Bond · Coupon 01</div><div class="event-id">EVT-2026-001</div></td>
+                    <td><span class="type-pill">COUPON</span></td><td>18 May 2026</td><td>24</td>
+                    <td><span class="status status-complete"><span></span> COMPLETE</span></td><td class="row-arrow">↗</td>
+                  </tr>
+                  <tr>
+                    <td><div class="event-name">KZ Demo Bond · Coupon 02</div><div class="event-id">EVT-2026-002</div></td>
+                    <td><span class="type-pill">COUPON</span></td><td>18 Nov 2026</td><td>24</td>
+                    <td><span class="status status-scheduled"><span></span> SCHEDULED</span></td><td class="row-arrow">↗</td>
+                  </tr>
+                  <tr>
+                    <td><div class="event-name">KZ Demo Bond · Maturity</div><div class="event-id">EVT-2028-001</div></td>
+                    <td><span class="type-pill redemption">REDEMPTION</span></td><td>18 May 2028</td><td>24</td>
+                    <td><span class="status status-draft"><span></span> DRAFT</span></td><td class="row-arrow">↗</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footnote"><span class="info-icon">i</span> Sample events and balances are illustrative and do not represent real securities or payments.</div>
+          </div>
+
+          <div class="lower-grid">
+            <article class="content-card bond-card">
+              <div class="card-heading compact">
+                <div><div class="section-kicker">INSTRUMENT</div><h3>Bond overview</h3></div>
+                <span class="mini-tag">DEMO ASSET</span>
+              </div>
+              <div class="bond-name-row"><div class="bond-symbol">KZ</div><div><strong>KZ Demo Bond</strong><span>KZTB · Series 2026-A</span></div></div>
+              <div class="bond-stats"><div><span>FACE VALUE</span><strong>₸ 10,000</strong></div><div><span>COUPON</span><strong>12.0% <small>p.a.</small></strong></div><div><span>MATURITY</span><strong>18 May 2028</strong></div></div>
+            </article>
+            <article class="content-card audit-card">
+              <div class="card-heading compact">
+                <div><div class="section-kicker">AUDIT TRAIL</div><h3>Recent activity</h3></div>
+                <span class="live-label"><span></span> DEMO</span>
+              </div>
+              <div class="activity-row"><span class="activity-mark mint">✓</span><div><strong>Coupon 01 marked complete</strong><span>Sample event · 18 May 2026</span></div><span class="activity-time">DEMO</span></div>
+              <div class="activity-row"><span class="activity-mark blue">↗</span><div><strong>Coupon 02 scheduled</strong><span>Sample event · 18 Nov 2026</span></div><span class="activity-time">DEMO</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view-panel investor-view" id="investorView" role="tabpanel" aria-labelledby="investorTab" hidden>
+          <article class="content-card investor-card">
+            <div class="section-kicker">INVESTOR PORTAL · SIMULATION</div>
+            <h3>Check a demo entitlement</h3>
+            <p class="investor-copy">This local interaction uses a sample wallet and mock balances. It does not connect a wallet or submit a transaction.</p>
+            <div class="wallet-preview"><span class="wallet-icon">◈</span><span>Sample investor wallet</span><code>7xKp...m2Qa</code></div>
+            <div class="entitlement-box" id="entitlementBox" hidden>
+              <div><span>ELIGIBLE FOR · KZ DEMO BOND COUPON 02</span><strong>₸ 42,000 <small>TEST</small></strong></div>
+              <span class="status status-scheduled"><span></span> AVAILABLE</span>
+            </div>
+            <div class="investor-actions">
+              <button class="secondary-button" id="checkEligibilityButton" type="button">Check eligibility</button>
+              <button class="primary-button" id="claimButton" type="button" disabled>Simulate claim <span>↗</span></button>
+            </div>
+            <div class="claim-result" id="claimResult" role="status" aria-live="polite" hidden></div>
+          </article>
+          <div class="demo-warning"><span>!</span><p><strong>Simulation only.</strong> No wallet is connected and no tokens are transferred. The claim button changes this page's demo state only.</p></div>
+        </section>
+      </section>
+
+      <section class="how-section">
+        <div class="how-heading"><div class="section-kicker">A CLEARER PROCESS</div><h2>From record date to<br />verified claim.</h2></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01</span><div class="step-symbol">▤</div><h3>Prepare</h3><p>Import the holder snapshot and review the payout calculation before publishing.</p></article>
+          <article class="step-card"><span class="step-number">02</span><div class="step-symbol">⌁</div><h3>Publish</h3><p>Anchor the action parameters and snapshot proof to a Solana transaction.</p></article>
+          <article class="step-card"><span class="step-number">03</span><div class="step-symbol">↗</div><h3>Reconcile</h3><p>Let eligible holders claim once and follow each result in the event history.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>bond<span class="brand-light">ops</span></span></a>
+      <span>Independent hackathon demo · Not affiliated with or integrated with KASE</span>
+      <span class="footer-right">SOLANA DEVNET · MOCK DATA</span>
+    </footer>
+
+    <dialog class="action-dialog" id="actionDialog" aria-labelledby="dialogTitle">
+      <form id="actionForm" method="dialog">
+        <div class="dialog-top"><div><div class="section-kicker">NEW EVENT</div><h2 id="dialogTitle">Create corporate action</h2></div><button class="close-button" id="closeDialogButton" type="button" aria-label="Close">×</button></div>
+        <label>Action name<input name="name" required maxlength="60" placeholder="e.g. KZ Demo Bond · Coupon 03" /></label>
+        <div class="form-row"><label>Action type<select name="type"><option>Coupon</option><option>Redemption</option></select></label><label>Record date<input name="date" type="date" required /></label></div>
+        <label>Estimated payout <span class="input-with-prefix"><span>₸</span><input name="amount" type="number" min="1" step="1" required placeholder="2500000" /></span></label>
+        <p class="dialog-note">This only adds a sample row to the current browser session. Nothing is saved or sent on-chain.</p>
+        <div class="dialog-actions"><button class="secondary-button" id="cancelDialogButton" type="button">Cancel</button><button class="primary-button" type="submit">Add demo event <span>↗</span></button></div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
