@@ -79,15 +79,27 @@ This describes the proposed prototype architecture. Components will be marked as
 
 ## Development Status
 
-**Current status:** product and architecture README. The runnable application, smart contract, and setup instructions have not yet been added to this repository.
+**Current status:** static, interactive product demo prepared for Vercel. The demo uses sample data only; it does not connect a wallet, call a Solana program, or transfer tokens. There is no smart contract or live investor registry in this repository yet.
+
+### Run locally
+
+The frontend is plain HTML, CSS, and JavaScript, so it has no npm dependencies or build step. Open `public/index.html` in a browser, or serve the `public` folder with any static web server.
+
+### Deploy to Vercel
+
+This repository is configured as a static site. Import the GitHub repository in Vercel and use **Other** as the framework preset, leave the build command empty, and set the output directory to `public`. The root-level `vercel.json` sets the output directory for the project.
+
+Vercel does not deploy the Solana program from this repository; the current site is a static frontend demo.
 
 ### Roadmap
 
 - [ ] Implement coupon action and one-time investor claims on Devnet
 - [ ] Add CSV import, validation, and payout preview
-- [ ] Add investor claim page and transaction status
-- [ ] Demonstrate a simplified redemption action
-- [ ] Add setup instructions and demo recording
+- [x] Add static issuer and investor demo views
+- [x] Prepare a Vercel static-site configuration
+- [ ] Connect investor claims to a Solana program
+- [ ] Add an authoritative holder snapshot source
+- [ ] Demonstrate real Devnet transactions
 
 ---
 
